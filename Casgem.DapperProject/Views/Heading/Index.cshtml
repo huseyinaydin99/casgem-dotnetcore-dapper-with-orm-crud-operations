@@ -5,12 +5,14 @@
 *@
 @{
 }
-<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
 <table class="table-bordered">
     <tr>
         <th>#</th>
         <th>Başlık</th>
         <th>Durum</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
     </tr>
     @foreach (var item in Model)
     {
@@ -18,6 +20,9 @@
             <td>@item.HeadingId</td>
             <td>@item.HeadingName</td>
             <td>@item.HeadingStatus</td>
+            <td><a href="/Heading/DeleteHeading/@item.HeadingId" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Heading/UpdateHeading/@item.HeadingId" class="btn btn-success">Güncelle</a></td>
         </tr>
     }
 </table>
+<a href="/Heading/AddHeading" class="btn btn-primary">Yeni Başlık Ekle</a>

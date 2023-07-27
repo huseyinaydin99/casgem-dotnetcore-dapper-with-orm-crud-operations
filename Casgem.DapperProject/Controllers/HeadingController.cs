@@ -29,7 +29,7 @@ namespace Casgem.DapperProject.Controllers
         {
             await using var connection = new SqlConnection(_connectionString);
             var query = $"INSERT INTO Headings(HeadingName, HeadingStatus)" +
-                $"VALUES ('{headings.HeadingName}', 'true')";
+                $"VALUES ('{headings.HeadingName}', '{headings.HeadingStatus}')";
             await connection.QueryAsync(query);
             return RedirectToAction("Index");
         }
@@ -38,7 +38,24 @@ namespace Casgem.DapperProject.Controllers
         public async Task<IActionResult> DeleteHeading(int id)
         {
             await using var connection = new SqlConnection(_connectionString);
-            await connection.ExecuteAsync($"Delete From Heading Where HeadingID = '{id}'");
+            await connection.ExecuteAsync($"Delete From Headings Where HeadingId = {id}");
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> UpdateHeading(int id)
+        {
+            await using var connection = new SqlConnection(_connectionString);
+            var values = await connection.QueryFirstAsync<Headings>($"Select * From Headings Where HeadingId = {id}");
+            return View(values);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateHeading(Headings headings)
+        {
+            await using var connection = new SqlConnection(_connectionString);
+            var query = $"UPDATE Headings SET HeadingName='{headings.HeadingName}', HeadingStatus='{headings.HeadingStatus}' Where HeadingId = '{headings.HeadingId}'";
+            await connection.QueryAsync(query);
             return RedirectToAction("Index");
         }
     }

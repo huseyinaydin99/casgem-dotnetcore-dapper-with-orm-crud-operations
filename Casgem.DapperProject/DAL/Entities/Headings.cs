@@ -4,6 +4,6 @@
     {
         public int HeadingId { get; set; }
         public string HeadingName { get; set; }
-        public int HeadingStatus { get; set; }
+        public bool HeadingStatus { get; set; }
     }
 }
