@@ -5,24 +5,25 @@
 *@
 @{
 }
-
-<table class="table-bordered">
-    <tr>
-        <th>#</th>
-        <th>Başlık</th>
-        <th>Durum</th>
-        <th>Sil</th>
-        <th>Güncelle</th>
-    </tr>
-    @foreach (var item in Model)
-    {
+<div class="container">
+    <table class="table-bordered">
         <tr>
-            <td>@item.HeadingId</td>
-            <td>@item.HeadingName</td>
-            <td>@item.HeadingStatus</td>
-            <td><a href="/Heading/DeleteHeading/@item.HeadingId" class="btn btn-danger">Sil</a></td>
-            <td><a href="/Heading/UpdateHeading/@item.HeadingId" class="btn btn-success">Güncelle</a></td>
+            <th>#</th>
+            <th>Başlık</th>
+            <th>Durum</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
         </tr>
-    }
-</table>
-<a href="/Heading/AddHeading" class="btn btn-primary">Yeni Başlık Ekle</a>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.HeadingId</td>
+                <td>@item.HeadingName</td>
+                <td>@item.HeadingStatus</td>
+                <td><a href="/Heading/DeleteHeading/@item.HeadingId" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Heading/UpdateHeading/@item.HeadingId" class="btn btn-success">Güncelle</a></td>
+            </tr>
+        }
+    </table>
+    <a href="/Heading/AddHeading" class="btn btn-primary">Yeni Başlık Ekle</a>
+</div>
