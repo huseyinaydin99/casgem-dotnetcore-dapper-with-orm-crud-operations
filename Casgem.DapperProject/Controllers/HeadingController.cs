@@ -9,11 +9,11 @@ namespace Casgem.DapperProject.Controllers
     {
         private readonly string _connectionString = "Server=DESKTOP-13123BI; Initial Catalog=CasgemDBDapper; Integrated Security=true;";
 
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             await using var connection = new SqlConnection(_connectionString);
             var values = await connection.QueryAsync<Headings>("Select * From Headings");
-
             return View(values);
         }
 
@@ -31,6 +31,14 @@ namespace Casgem.DapperProject.Controllers
             var query = $"INSERT INTO Headings(HeadingName, HeadingStatus)" +
                 $"VALUES ('{headings.HeadingName}', 'true')";
             await connection.QueryAsync(query);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> DeleteHeading(int id)
+        {
+            await using var connection = new SqlConnection(_connectionString);
+            await connection.ExecuteAsync($"Delete From Heading Where HeadingID = '{id}'");
             return RedirectToAction("Index");
         }
     }
