@@ -16,10 +16,23 @@
             <input type="text" class="form-control" asp-for="HeadingName" />
             <br />
             <label>Durumu</label>
-            <input type="checkbox" asp-for="HeadingStatus" />
+            <!--  <input type="checkbox" asp-for="HeadingStatus" /> -->
             <br />
             <hr />
             <button class="btn btn-dark">Başlığı Güncelle</button>
+
+
+
+            @if (Model.HeadingStatus)
+            {
+                <input type="radio" name="HeadingStatus" /><span>Aktif</span>
+
+            }
+            else
+            {
+                <input type="radio" name="HeadingStatus"><span>Pasif</span>
+            }
+
         </form>
     </div>
 </div>
