@@ -20,19 +20,16 @@
             <br />
             <hr />
             <button class="btn btn-dark">Başlığı Güncelle</button>
-
-
-
             @if (Model.HeadingStatus)
             {
-                <input type="radio" name="HeadingStatus" /><span>Aktif</span>
-
+                <input type="radio" name="HeadingStatus" value="False" />
+                <label>Pasif</label>
             }
             else
             {
-                <input type="radio" name="HeadingStatus"><span>Pasif</span>
+                <input type="radio" name="HeadingStatus" value="True">
+                <label>Aktif</label>
             }
-
         </form>
     </div>
 </div>
