@@ -1,0 +1,23 @@
+﻿@model List<Casgem.DapperProject.DAL.Entities.Headings>
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<table class="table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Başlık</th>
+        <th>Durum</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.HeadingId</td>
+            <td>@item.HeadingName</td>
+            <td>@item.HeadingStatus</td>
+        </tr>
+    }
+</table>
